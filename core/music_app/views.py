@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from django.core.paginator import Paginator
-from .models import Song
+from . models import Song
 
 
 def index(request):
