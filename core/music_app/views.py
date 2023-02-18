@@ -1,15 +1,8 @@
-from django.shortcuts import render, redirect
+from django.views.generic import ListView
 
-from django.core.paginator import Paginator
 from . models import Song
 
-
-def index(request):
-    paginator = Paginator(Song.objects.all(), 1)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    context = {
-        'page_obj': page_obj
-    }
-    return render(request, 'index.html', context)
-
+class SongView(ListView):
+    paginate_by = 2
+    model = Song
+    template_name = 'index.html'
